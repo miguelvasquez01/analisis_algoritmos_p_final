@@ -1,0 +1,9 @@
+id,nombre,municipio,categoria,lat,lon,duracion_visita_min,fuente,nodo_osm,distancia_al_nodo_m
+15,Valle de Cocora,Salento,Atractivo turístico,4.637712,-75.48907,240,MINCIT (Senderismo de media montaña en palmas de cera),1543526033,1063.14
+19,Recuca (Recorrido de la Cultura Cafetera),Calarcá,Atractivo turístico,4.4326046,-75.7332347,180,Experiencia Recuca (Taller vivencial y catación de café),6334517962,564.3
+24,Cascadas Río Verde,Córdoba,Atractivo turístico,4.4030339,-75.6582667,300,Ruta Ecoturística Córdoba (Caminata de acceso y baño),7626166681,1459.5
+25,Reserva Natural Kasaguadua,Salento,Atractivo turístico,4.6293971,-75.5850789,120,Reserva Kasaguadua (Recorrido por bosque de niebla),6617854513,664.72
+29,Hacienda Combia,Calarcá,Finca/Hotel rural,4.4917288,-75.6864861,0,Alojamiento rural / Punto de partida o llegada,6387018054,718.39
+30,Finca Hotel El Bosque de Samán,Quimbaya,Finca/Hotel rural,4.6602912,-75.7388148,0,Alojamiento rural / Punto de partida o llegada,7616662826,1267.49
+32,Hotel Rural Sazagua Quindío,Circasia,Finca/Hotel rural,4.6385134,-75.5468058,0,Alojamiento rural / Punto de partida o llegada,5227721790,618.83
+34,Finca Hotel Resplandor Quindiano,Montenegro,Finca/Hotel rural,4.571843063225896,-75.7127186763618,0,Alojamiento rural / Punto de partida o llegada,10154625892,618.46

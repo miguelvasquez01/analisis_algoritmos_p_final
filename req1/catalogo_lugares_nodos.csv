@@ -1,0 +1,41 @@
+id,nombre,municipio,categoria,lat,lon,duracion_visita_min,fuente,nodo_osm,distancia_al_nodo_m
+1,Armenia (Plaza de Bolívar),Armenia,Cabecera municipal,4.532601950706727,-75.67296696369789,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,10042792787,60.39
+2,Buenavista (Parque Principal),Buenavista,Cabecera municipal,4.359481275255843,-75.73842154785672,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,4591256984,17.37
+3,Calarcá (Parque Bolívar),Calarcá,Cabecera municipal,4.530651880989591,-75.64046712695813,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,3003932856,34.72
+4,Circasia (Parque Principal),Circasia,Cabecera municipal,4.620122347824713,-75.63466583485183,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,1159189828,50.05
+5,Córdoba (Parque Principal),Córdoba,Cabecera municipal,4.390111215590019,-75.68549165231633,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,3192289491,45.81
+6,Filandia (Parque Principal),Filandia,Cabecera municipal,4.6747808,-75.6581641,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,7087244404,37.26
+7,Génova (Parque Principal),Génova,Cabecera municipal,4.2063759,-75.7905522,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,4466303404,37.11
+8,La Tebaida (Parque Principal),La Tebaida,Cabecera municipal,4.4537698,-75.78932,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,5278717846,46.48
+9,Montenegro (Parque Principal),Montenegro,Cabecera municipal,4.5671697,-75.7504826,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,960389902,41.47
+10,Pijao (Parque Principal),Pijao,Cabecera municipal,4.3341006,-75.7040288,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,2735374232,22.33
+11,Quimbaya (Parque Principal),Quimbaya,Cabecera municipal,4.6224862,-75.7630803,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,3989083941,45.35
+12,Salento (Parque Principal),Salento,Cabecera municipal,4.6372491,-75.5698067,0,OpenStreetMap Node / Coordenadas de centroide de plaza principal,338999580,55.43
+13,Parque Nacional del Café,Montenegro,Atractivo turístico,4.540273697203204,-75.77065080233238,480,Guía Oficial Parque del Café / Cotelco (Atracciones mecanicas y shows),11276245850,193.22
+14,PANACA,Quimbaya,Atractivo turístico,4.607683,-75.8186979,480,Operador Turístico PANACA (10 estaciones agropecuarias),7623861314,77.92
+15,Valle de Cocora,Salento,Atractivo turístico,4.637712,-75.48907,240,MINCIT (Senderismo de media montaña en palmas de cera),1543526033,1063.14
+16,Jardín Botánico del Quindío,Calarcá,Atractivo turístico,4.5116806,-75.6509772,180,Guía del Mariposario del Quindío (Bosque nativo y mariposario),3013499652,280.52
+17,Museo del Oro Quimbaya,Armenia,Atractivo turístico,4.5713808,-75.6478397,90,Red de Museos Banco de la República (Exhibición arqueológica),338985769,20.07
+18,Mirador del Colina (Filandia),Filandia,Atractivo turístico,4.6688362,-75.665644,60,Alcaldía de Filandia (Torre de avistamiento y paisajes),2681634501,143.8
+19,Recuca (Recorrido de la Cultura Cafetera),Calarcá,Atractivo turístico,4.4326046,-75.7332347,180,Experiencia Recuca (Taller vivencial y catación de café),6334517962,564.3
+20,Parque Los Arrieros,Quimbaya,Atractivo turístico,4.5800499,-75.780889,300,Parque Los Arrieros (Senderos temáticos y muestras culturales),4443172721,399.02
+21,Parque de la Vida,Armenia,Atractivo turístico,4.548106,-75.6604214,120,Sociedad de Mejoras Públicas de Armenia (Paseo ecológico urbano),6938572956,78.25
+22,Mirador Alto de la Cruz,Salento,Atractivo turístico,4.6397978,-75.5663879,45,Criterio de caminata urbana (Escalinata de la Calle Real),2107061017,173.93
+23,Café San Alberto (Mirador Buenavista),Buenavista,Atractivo turístico,4.3594441,-75.7346233,180,Experiencia San Alberto (Bautizo cafetero y cata de café),2104432131,274.49
+24,Cascadas Río Verde,Córdoba,Atractivo turístico,4.4030339,-75.6582667,300,Ruta Ecoturística Córdoba (Caminata de acceso y baño),7626166681,1459.5
+25,Reserva Natural Kasaguadua,Salento,Atractivo turístico,4.6293971,-75.5850789,120,Reserva Kasaguadua (Recorrido por bosque de niebla),6617854513,664.72
+26,Valle de Maravélez,La Tebaida,Atractivo turístico,4.4181244,-75.8419601,180,Ruta Paisajística PCC (Recorrido a orillas del río La Vieja),7273326136,95.04
+27,Centro Histórico y Plaza de Pijao,Pijao,Atractivo turístico,4.3341006,-75.7040288,90,Red Cittaslow (Recorrido de arquitectura bahareque),2735374232,22.33
+28,Finca El Ocaso Salento,Salento,Finca/Hotel rural,4.623706428724347,-75.59527070273641,0,Alojamiento rural / Punto de partida o llegada,2922930733,443.72
+29,Hacienda Combia,Calarcá,Finca/Hotel rural,4.4917288,-75.6864861,0,Alojamiento rural / Punto de partida o llegada,6387018054,718.39
+30,Finca Hotel El Bosque de Samán,Quimbaya,Finca/Hotel rural,4.6602912,-75.7388148,0,Alojamiento rural / Punto de partida o llegada,7616662826,1267.49
+31,Finca La Morelia,Armenia,Finca/Hotel rural,4.466534191089022,-75.72347746069879,0,Alojamiento rural / Punto de partida o llegada,6419984038,399.67
+32,Hotel Rural Sazagua Quindío,Circasia,Finca/Hotel rural,4.6385134,-75.5468058,0,Alojamiento rural / Punto de partida o llegada,5227721790,618.83
+33,Finca Hotel Las Palmas,La Tebaida,Finca/Hotel rural,4.4311024,-75.8329317,0,Alojamiento rural / Punto de partida o llegada,7616946454,124.51
+34,Finca Hotel Resplandor Quindiano,Montenegro,Finca/Hotel rural,4.571843063225896,-75.7127186763618,0,Alojamiento rural / Punto de partida o llegada,10154625892,618.46
+35,Finca Hotel Del Bosque,Montenegro,Finca/Hotel rural,4.5424421897564695,-75.73965160727586,0,Alojamiento rural / Punto de partida o llegada,12336798962,20.77
+36,Trilladora Armenia (Comité de Cafeteros),Armenia,Centro de acopio/Trilladora,4.5194238,-75.6907261,0,Infraestructura agroindustrial / Logística de carga,2752461008,23.44
+37,Central de Beneficio de Café - Calarcá,Calarcá,Centro de acopio/Trilladora,4.5290536,-75.6435899,0,Infraestructura agroindustrial / Logística de carga,3003932814,14.98
+38,Coop. de Caficultores del Quindío (Filandia),Filandia,Centro de acopio/Trilladora,4.6755839,-75.6576487,0,Infraestructura agroindustrial / Logística de carga,2099850846,44.14
+39,Punto de Acopio de Café Génova,Génova,Centro de acopio/Trilladora,4.2046518,-75.7925731,0,Infraestructura agroindustrial / Logística de carga,4466303414,21.36
+40,Trilladora y Almacén de Café Quimbaya,Quimbaya,Centro de acopio/Trilladora,4.6207692,-75.7668589,0,Infraestructura agroindustrial / Logística de carga,3989083883,65.77

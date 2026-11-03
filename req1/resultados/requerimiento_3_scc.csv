@@ -1,0 +1,6 @@
+Red,Nodos (V),Aristas (E),Tamaño (V + E),Tiempo Mediana (ms)
+Armenia 2 km,1641,3644,5285,24.7855
+Armenia 5 km,4299,9716,14015,68.2126
+Armenia 10 km,5929,13376,19305,104.6521
+Armenia 20 km,8769,20041,28810,148.1659
+Quindío Completo,8804,20151,28955,144.5031
