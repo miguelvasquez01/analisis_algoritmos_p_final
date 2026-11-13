@@ -1,0 +1,46 @@
+{
+ "partida": 1,
+ "atractivos_iniciales": [
+  13,
+  15,
+  16,
+  17,
+  18,
+  21,
+  22,
+  25
+ ],
+ "atractivos_finales": [
+  17,
+  18,
+  21,
+  22,
+  25
+ ],
+ "held_karp": {
+  "orden": [
+   "Armenia (Plaza de Bolívar)",
+   "Parque de la Vida",
+   "Museo del Oro Quimbaya",
+   "Mirador del Colina (Filandia)",
+   "Reserva Natural Kasaguadua",
+   "Mirador Alto de la Cruz",
+   "Armenia (Plaza de Bolívar)"
+  ],
+  "viaje_min": 123.9
+ },
+ "voraz": {
+  "orden": [
+   "Armenia (Plaza de Bolívar)",
+   "Parque de la Vida",
+   "Museo del Oro Quimbaya",
+   "Reserva Natural Kasaguadua",
+   "Mirador Alto de la Cruz",
+   "Mirador del Colina (Filandia)",
+   "Armenia (Plaza de Bolívar)"
+  ],
+  "viaje_min": 127.4
+ },
+ "visitas_min": 435,
+ "jornada_min": 660
+}

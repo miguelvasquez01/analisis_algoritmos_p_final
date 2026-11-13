@@ -10,6 +10,15 @@
 3. py req1/3_componente_conexo.py
 4. py req1/4_catalogo.py
 5. py req1/4.1_asociar_nodos.py
+6. py req2/dijkstra_heap.py  (matriz de tiempos 40x40 que usa el req4)
+
+# Requerimiento 3 (envolvente convexa)
+- py req3/1_envolvente_experimento.py  -> req3/resultados/
+
+# Requerimiento 4 (viajante asimétrico)
+- py req4/1_experimentos_tsp.py        -> req4/resultados/ (todo)
+- py req4/1_experimentos_tsp.py 3 4 5  -> solo calidad, itinerario y contraejemplo (rápido)
+- El punto 1 tarda ~10 min: la fuerza bruta con k=12 se corta a los 5 min.
 
 
 # Archivos de datos:

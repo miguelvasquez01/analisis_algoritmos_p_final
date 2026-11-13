@@ -1,0 +1,5 @@
+k,instancias,desviacion_promedio_pct,desviacion_maxima_pct,desviacion_minima_pct,veces_optimo
+5,10,6.7,16.81,0.46,0
+8,10,9.49,16.03,4.32,0
+10,10,8.56,16.53,4.27,0
+12,10,13.06,19.52,7.62,0
