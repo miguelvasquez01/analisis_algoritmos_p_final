@@ -24,6 +24,7 @@ RAIZ = Path(__file__).resolve().parent.parent
 sys.path.append(str(RAIZ))
 sys.path.append(str(RAIZ / "req4"))
 from auxiliar_functions import medir_tiempo_ejecucion, guardar_resultados_csv, generar_tabla_desde_csv
+from itinerario import recortar_itinerario, resolver, tabla_itinerario
 from tsp import (LimiteDeTiempo, costo_recorrido, memoria_teorica_held_karp,
                  tsp_fuerza_bruta, tsp_held_karp, tsp_vecino_mas_cercano)
 
@@ -185,51 +186,46 @@ def punto3_calidad():
 # ---------------------------------------------------------------------------
 def punto4_itinerario(partida=ID_ARMENIA, atractivos=(13, 15, 16, 17, 18, 21, 22, 25), jornada_min=660):
     """Ordena con Held-Karp; si no cabe en la jornada, quita en cada paso el atractivo
-    cuya eliminación más reduce la duración total (visita + desvío) y recalcula."""
+    cuya eliminación más reduce la duración total (visita + desvío) y recalcula.
+    La lógica está en req4/itinerario.py (la reutiliza la aplicación)."""
     print("\n=== PUNTO 4: itinerario de un día ===")
-    actuales = list(atractivos)
+    tiempos = {a: {b: MAT[i][j] for j, b in enumerate(IDS)} for i, a in enumerate(IDS)}
+    duracion = CAT["duracion_visita_min"].to_dict()
+    pasos_it, actuales = recortar_itinerario(partida, atractivos, tiempos, duracion, jornada_min)
     pasos = []
-    while True:
-        ids = [partida] + actuales
-        D = submatriz(ids)
-        c, r = tsp_held_karp(D)
-        viaje = c / 60
-        visitas = sum(CAT.loc[i, "duracion_visita_min"] for i in actuales)
-        total = viaje + visitas
-        paso = {"paso": len(pasos), "atractivos": len(actuales),
-                "orden": " -> ".join(str(ids[i]) for i in r),
-                "orden_nombres": " -> ".join(nombres(ids, r)),
-                "viaje_min": round(viaje, 1), "visitas_min": int(visitas),
-                "total_min": round(total, 1), "total_h": round(total / 60, 2),
-                "cabe_en_11h": "Sí" if total <= jornada_min else "No", "quitado": ""}
-        pasos.append(paso)
-        print(f"  {len(actuales)} atractivos: viaje {viaje:.1f} + visitas {visitas} = {total:.1f} min")
-        if total <= jornada_min or not actuales:
-            break
-        # Criterio: quitar el atractivo que más tiempo libera
-        mejor = None
-        for a in actuales:
-            resto = [x for x in actuales if x != a]
-            cr, _ = tsp_held_karp(submatriz([partida] + resto))
-            t = cr / 60 + sum(CAT.loc[i, "duracion_visita_min"] for i in resto)
-            if mejor is None or t < mejor[1]:
-                mejor = (a, t)
-        paso["quitado"] = f"{mejor[0]} ({CAT.loc[mejor[0], 'nombre']}) libera {total - mejor[1]:.1f} min"
-        actuales.remove(mejor[0])
+    for n, p in enumerate(pasos_it):
+        print(f"  {len(p['atractivos'])} atractivos: viaje {p['viaje_min']:.1f} + visitas {p['visitas_min']}"
+              f" = {p['total_min']:.1f} min")
+        quitado = ""
+        if p["quitado"] is not None:
+            quitado = f"{p['quitado']} ({CAT.loc[p['quitado'], 'nombre']}) libera {p['libera_min']:.1f} min"
+        pasos.append({"paso": n, "atractivos": len(p["atractivos"]),
+                      "orden": " -> ".join(str(i) for i in p["recorrido"]),
+                      "orden_nombres": " -> ".join(CAT.loc[i, "nombre"] for i in p["recorrido"]),
+                      "viaje_min": round(p["viaje_min"], 1), "visitas_min": int(p["visitas_min"]),
+                      "total_min": round(p["total_min"], 1), "total_h": round(p["total_min"] / 60, 2),
+                      "cabe_en_11h": "Sí" if p["cabe"] else "No", "quitado": quitado})
 
     # Comparación con la voraz para el itinerario final
     ids = [partida] + actuales
-    D = submatriz(ids)
-    c_hk, r_hk = tsp_held_karp(D)
-    c_nn, r_nn = tsp_vecino_mas_cercano(D)
+    c_hk, r_hk = resolver(ids, tiempos, "held_karp")
+    c_nn, r_nn = resolver(ids, tiempos, "voraz")
     final = {"partida": partida, "atractivos_iniciales": list(atractivos), "atractivos_finales": actuales,
-             "held_karp": {"orden": nombres(ids, r_hk), "viaje_min": round(c_hk / 60, 1)},
-             "voraz": {"orden": nombres(ids, r_nn), "viaje_min": round(c_nn / 60, 1)},
+             "held_karp": {"orden": [CAT.loc[i, "nombre"] for i in r_hk], "viaje_min": round(c_hk / 60, 1)},
+             "voraz": {"orden": [CAT.loc[i, "nombre"] for i in r_nn], "viaje_min": round(c_nn / 60, 1)},
              "visitas_min": int(sum(CAT.loc[i, "duracion_visita_min"] for i in actuales)),
              "jornada_min": jornada_min}
     guardar_resultados_csv(pasos, str(DIR_RES / "req4_itinerario_pasos.csv"))
     with open(DIR_RES / "req4_itinerario_final.json", "w", encoding="utf-8") as f:
         json.dump(final, f, ensure_ascii=False, indent=1)
+
+    # Tabla con el formato del anexo (una fila por parada + regreso)
+    tabla = [{"orden": f["orden"], "lugar": CAT.loc[f["id"], "nombre"],
+              "desplazamiento_desde_anterior_min": round(f["desplazamiento_min"], 1),
+              "visita_min": "" if f["visita_min"] is None else int(f["visita_min"]),
+              "tiempo_acumulado_h": round(f["acumulado_h"], 2)}
+             for f in tabla_itinerario(r_hk, tiempos, duracion)]
+    guardar_resultados_csv(tabla, str(DIR_RES / "req4_itinerario_tabla.csv"))
     return pasos, final
 
 

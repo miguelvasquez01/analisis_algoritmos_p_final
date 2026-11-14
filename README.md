@@ -1,9 +1,36 @@
-# Incializacion:
+# Instalación
 
-(Solo la primera vez, para preparar los datos)
-- Debe tener python instalado.
-- Asegurese de tener instalada la libreria osmnx para importar la red vial de OpenStreetMap con `py -m pip install osmnx`
-- Para hacer busqueda espacial en arboles: `pip install scipy`
+Requiere Python 3.11 o superior. Desde la raíz del repositorio:
+
+```
+py -m venv .venv
+.venv\Scripts\activate          (Linux/macOS: source .venv/bin/activate)
+pip install -r requirements.txt
+```
+
+# Requerimiento 5 (aplicación)
+
+Los datos procesados ya están en el repositorio, así que la aplicación no necesita volver a descargar la red.
+Desde la raíz del repositorio, con el entorno activado:
+
+```
+streamlit run app/Inicio.py
+```
+
+Se abre en http://localhost:8501. Páginas:
+- **Ruta mínima**: origen y destino del catálogo → ruta en el mapa, tiempo de viaje, distancia y nodos explorados (Dijkstra con cola de prioridad, `req2/dijkstra_heap.py`).
+- **Envolvente**: envolvente convexa sobre el mapa del departamento (`req3/resultados/req3_envolvente_red.json`), con botón para recalcularla con el QuickHull propio.
+- **Itinerario**: lugar de partida (por defecto Armenia) y 6 a 8 atractivos → recorrido con Held-Karp y con el vecino más cercano, tiempo total de cada uno, diferencia y si cabe en 11 h (opcionalmente aplica el criterio de recorte del req. 4).
+- **Resultados**: tablas y gráficas de los requerimientos 1 a 4, leídas de `req*/resultados/`.
+
+Las rutas y el itinerario se calculan en el momento con las implementaciones propias. Estructura:
+- `app/servicios/`: carga de datos y orquestación de los algoritmos (sin Streamlit).
+- `app/pages/`, `app/Inicio.py`, `app/ui.py`: interfaz (Streamlit + Folium).
+- Verificación de la app contra los resultados de req2, req3 y req4: `py app/verificar_app.py`
+
+# Inicialización de los datos
+
+(Solo si se quieren regenerar los datos; ya están en el repositorio)
 - Ejecute los siguientes comandos en orden:
 1. py req1/1_importar_red_vial.py
 2. py req1/2_vel_time.py
@@ -19,6 +46,7 @@
 - py req4/1_experimentos_tsp.py        -> req4/resultados/ (todo)
 - py req4/1_experimentos_tsp.py 3 4 5  -> solo calidad, itinerario y contraejemplo (rápido)
 - El punto 1 tarda ~10 min: la fuerza bruta con k=12 se corta a los 5 min.
+- La lógica del itinerario de un día (criterio de recorte) está en `req4/itinerario.py`; la usan el script y la aplicación.
 
 
 # Archivos de datos:
