@@ -4,6 +4,7 @@
 - Debe tener python instalado.
 - Asegurese de tener instalada la libreria osmnx para importar la red vial de OpenStreetMap con `py -m pip install osmnx`
 - Para hacer busqueda espacial en arboles: `pip install scipy`
+- `pip install matplotlib`
 - Ejecute los siguientes comandos en orden:
 1. py req1/1_importar_red_vial.py
 2. py req1/2_vel_time.py
@@ -22,3 +23,5 @@
 
 
 Por cada algoritmo: Big(O) de tiempo y memoria con fuentes, medir 5 veces, una sola unidad de tiempo, pregunta al profe(anexo y otras mediciones propias), hacer csv o json de resultados.
+
+entender el algoritmo, entender el codigo, 
