@@ -1,0 +1,87 @@
+{
+ "k": 3,
+ "semilla": 5094,
+ "lugares": {
+  "1": "Armenia (Plaza de Bolívar)",
+  "17": "Museo del Oro Quimbaya",
+  "38": "Coop. de Caficultores del Quindío (Filandia)",
+  "34": "Finca Hotel Resplandor Quindiano"
+ },
+ "matriz_min": [
+  [
+   0.0,
+   10.7,
+   46.1,
+   21.0
+  ],
+  [
+   9.4,
+   0.0,
+   35.7,
+   28.8
+  ],
+  [
+   46.2,
+   36.8,
+   0.0,
+   44.9
+  ],
+  [
+   20.3,
+   29.9,
+   45.0,
+   0.0
+  ]
+ ],
+ "voraz": {
+  "total_min": 130.7,
+  "tramos": [
+   {
+    "de": "Armenia (Plaza de Bolívar)",
+    "a": "Museo del Oro Quimbaya",
+    "min": 10.7
+   },
+   {
+    "de": "Museo del Oro Quimbaya",
+    "a": "Finca Hotel Resplandor Quindiano",
+    "min": 28.8
+   },
+   {
+    "de": "Finca Hotel Resplandor Quindiano",
+    "a": "Coop. de Caficultores del Quindío (Filandia)",
+    "min": 45.0
+   },
+   {
+    "de": "Coop. de Caficultores del Quindío (Filandia)",
+    "a": "Armenia (Plaza de Bolívar)",
+    "min": 46.2
+   }
+  ]
+ },
+ "optimo": {
+  "total_min": 111.5,
+  "tramos": [
+   {
+    "de": "Armenia (Plaza de Bolívar)",
+    "a": "Museo del Oro Quimbaya",
+    "min": 10.7
+   },
+   {
+    "de": "Museo del Oro Quimbaya",
+    "a": "Coop. de Caficultores del Quindío (Filandia)",
+    "min": 35.7
+   },
+   {
+    "de": "Coop. de Caficultores del Quindío (Filandia)",
+    "a": "Finca Hotel Resplandor Quindiano",
+    "min": 44.9
+   },
+   {
+    "de": "Finca Hotel Resplandor Quindiano",
+    "a": "Armenia (Plaza de Bolívar)",
+    "min": 20.3
+   }
+  ]
+ },
+ "desviacion_pct": 17.18
+}

@@ -1,0 +1,5 @@
+Conjunto,Puntos (n),Vértices (h),QuickHull propio (ms),SciPy ConvexHull (ms),Cociente propio/SciPy,Mismos vértices
+Red vial Quindío (nodos SCC),8788,14,7.08228,0.97774,7.2,Sí
+Aleatorios n=1000,1000,18,1.11705,0.13815,8.1,Sí
+Aleatorios n=10000,10000,29,12.04473,1.25308,9.6,Sí
+Aleatorios n=50000,50000,29,98.59286,6.35188,15.5,Sí
