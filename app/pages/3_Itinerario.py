@@ -10,8 +10,8 @@ from servicios.itinerario import planificar
 ui.configurar_pagina("Itinerario de un día")
 st.title("Itinerario de un día")
 st.caption("Se sale del lugar de partida, se visitan los atractivos y se regresa (viajante asimétrico). "
-           "La matriz de tiempos entre los lugares elegidos se calcula en el momento con Dijkstra "
-           "(una ejecución sin destino desde cada lugar); el orden se obtiene con Held-Karp, "
+           "La matriz de tiempos entre los lugares elegidos se calcula en el momento con Dijkstra, "
+           "el orden se obtiene con Held-Karp, "
            "O(k²·2ᵏ), y con el vecino más cercano, O(k²). Jornada: 11 h.")
 
 red = ui.red()
@@ -27,8 +27,7 @@ atractivos = c2.multiselect("Atractivos (entre 6 y 8)", opciones,
                             default=[i for i in POR_DEFECTO if i in opciones],
                             max_selections=8, format_func=lambda i: ui.nombre(cat, i))
 recortar = st.checkbox(
-    "Si no cabe en 11 h, quitar atractivos (criterio del req. 4: en cada paso se quita el que más "
-    "tiempo libera, su visita más el desvío que causa, y se recalcula con Held-Karp)", value=False)
+    " quitar atractivos (quitar atractivos si no cabe en 11 h (se quita el que más tiempo libera, hasta que quepa))", value=False)
 
 if not 6 <= len(atractivos) <= 8:
     st.warning(f"Elija entre 6 y 8 atractivos (lleva {len(atractivos)}).")
@@ -61,8 +60,7 @@ st.caption(f"Visitas: {hk.visitas_min:.0f} min (iguales para ambos métodos). Ti
            f"Dijkstra ×{len(it.atractivos_iniciales) + 1} {it.dijkstra_ms:.0f} ms · "
            f"Held-Karp {hk.calculo_ms:.2f} ms · voraz {nn.calculo_ms:.3f} ms.")
 if not cabe and not recortar:
-    st.error("El recorrido no cabe en la jornada de 11 h. Active la casilla de arriba para quitar "
-             "atractivos con el criterio del requerimiento 4.")
+    st.error("El recorrido no cabe en la jornada de 11 h.")
 
 if it.pasos and len(it.pasos) > 1:
     with st.expander(f"Recorte de atractivos ({len(it.pasos) - 1} pasos)", expanded=True):
@@ -119,4 +117,4 @@ for pos, i in enumerate(hk.recorrido[:-1]):
 ui.ajustar_a(m, todas)
 ui.mostrar_mapa(m, key="mapa_itinerario", altura=600)
 st.caption("Línea continua azul: Held-Karp. Línea discontinua naranja: voraz. "
-           "Los números son el orden de visita de Held-Karp (P = partida).")
+           "Los números son el orden de visita de Held-Karp")

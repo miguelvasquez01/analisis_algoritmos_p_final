@@ -9,8 +9,7 @@ from servicios.datos import RAIZ, RUTA_MATRIZ
 
 ui.configurar_pagina("Resultados")
 st.title("Resultados de los requerimientos 1 a 4")
-st.caption("Todo se lee de los archivos CSV, JSON y PNG generados por los scripts de cada requerimiento "
-           "(carpetas req*/resultados). Si se vuelven a ejecutar los experimentos, esta página se actualiza.")
+st.caption("Todo se lee de los archivos CSV, JSON y PNG generados por los scripts de cada requerimiento. ")
 
 # Títulos legibles para los archivos conocidos; los demás se muestran con su nombre.
 TITULOS = {

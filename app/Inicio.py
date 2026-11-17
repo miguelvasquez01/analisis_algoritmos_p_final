@@ -3,8 +3,6 @@ Requerimiento 5 - Aplicación demostrativa del proyecto "Rutas del Paisaje Cultu
 
 Ejecutar desde la raíz del repositorio:   streamlit run app/Inicio.py
 """
-import platform
-import sys
 
 import streamlit as st
 
@@ -14,11 +12,8 @@ ui.configurar_pagina("Inicio")
 
 st.title("☕ Rutas del Paisaje Cultural Cafetero")
 st.markdown(
-    "Aplicación demostrativa del proyecto final de **Análisis de Algoritmos**. "
-    "Trabaja sobre la componente fuertemente conexa de la red vial del Quindío (OpenStreetMap) "
-    "y el catálogo de 40 lugares. Las rutas y el itinerario se calculan **en el momento** con las "
-    "implementaciones propias del proyecto; la envolvente se lee del resultado del requerimiento 3 "
-    "y se puede recalcular."
+    "Trabaja sobre la componente fuertemente conexa de la red vial del Quindío "
+    "y el catálogo de 40 lugares."
 )
 
 red = ui.red()
@@ -47,6 +42,3 @@ m = ui.mapa_base()
 ui.agregar_lugares(m, cat, radio=6)
 ui.mostrar_mapa(m, key="mapa_inicio", altura=480)
 
-with st.expander("Entorno de ejecución"):
-    st.write({"Python": sys.version.split()[0], "Sistema operativo": platform.platform(),
-              "Procesador": platform.processor() or platform.machine()})
