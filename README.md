@@ -37,7 +37,13 @@ Las rutas y el itinerario se calculan en el momento con las implementaciones pro
 3. py req1/3_componente_conexo.py
 4. py req1/4_catalogo.py
 5. py req1/4.1_asociar_nodos.py
-6. py req2/dijkstra_heap.py  (matriz de tiempos 40x40 que usa el req4)
+6. py req2/req2.py matriz  (matriz de tiempos 40x40 que usa el req4)
+
+# Requerimiento 2 (caminos mínimos)
+- py req2/req2.py          -> verificación + mediciones + gráfica + matriz -> req2/resultados/ (~1 min)
+- py req2/req2.py medir    -> solo verificación, mediciones y gráfica
+- py req2/req2.py matriz   -> solo la matriz de tiempos (`req2/matriz_tiempos.csv`)
+- Algoritmos: `req2/dijkstra_heap.py` (cola de prioridad) y `req2/dijkstra_lineal.py` (recorrido lineal), ambos sobre la misma lista de adyacencia.
 
 # Requerimiento 3 (envolvente convexa)
 - py req3/1_envolvente_experimento.py  -> req3/resultados/

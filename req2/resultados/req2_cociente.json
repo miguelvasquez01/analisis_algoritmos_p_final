@@ -1,0 +1,17 @@
+{
+ "pares_con_ambas": 10,
+ "cociente_mediana": 549.78,
+ "cociente_min": 259.91,
+ "cociente_max": 716.67,
+ "unidad_tiempo": "ms (mediana de 5 ejecuciones)",
+ "grafo": {
+  "V": 8788,
+  "E_lista_adyacencia": 19993
+ },
+ "maquina": {
+  "procesador": "AMD Ryzen 7 8700F 8-Core Processor",
+  "ram_gb": 31.7,
+  "sistema_operativo": "Windows-11-10.0.26300-SP0",
+  "python": "3.14.7"
+ }
+}

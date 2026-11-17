@@ -1,25 +1,17 @@
 """
-Dijkstra con cola de prioridad (implementación propia) y cálculo de la
-matriz de tiempos entre los lugares del catálogo.
+Dijkstra con cola de prioridad (implementación propia) y utilidades del req. 2.
 
-La matriz es la entrada del Requerimiento 4 (problema del viajante asimétrico).
 Se usa `heapq` (montículo binario de la librería estándar) solo como estructura
-de apoyo: push/pop en O(log n).
+de apoyo: heappush/heappop en O(log n). Con 'lazy deletion' la cola puede tener
+hasta E entradas, así que cada operación cuesta O(log E) = O(log V) (E <= V^2).
 
 Complejidad: O((V + E) log V) en tiempo y O(V + E) en memoria
 (Cormen et al., 2022, Introduction to Algorithms, 4th ed., sec. 22.3).
+
+La ejecución de los experimentos y el cálculo de la matriz están en req2/req2.py.
 """
 import heapq
 import math
-from pathlib import Path
-
-import osmnx as ox
-import pandas as pd
-
-RAIZ = Path(__file__).resolve().parent.parent
-RUTA_GRAFO = RAIZ / "req1" / "red_vial_quindio_filtered.graphml"
-RUTA_CATALOGO = RAIZ / "req1" / "catalogo_lugares_nodos.csv"
-RUTA_MATRIZ = RAIZ / "req2" / "matriz_tiempos.csv"
 
 
 def construir_lista_adyacencia(G, peso="travel_time"):
@@ -41,7 +33,8 @@ def dijkstra_heap(adj, origen, destino=None):
 
     Si `destino` se da, se detiene al sacarlo de la cola y devuelve
     (tiempo, ruta, explorados). Si no, recorre todo el grafo y devuelve
-    (dist, pred, explorados)."""
+    (dist, pred, explorados). Un nodo cuenta como explorado una sola vez,
+    la primera vez que sale de la cola."""
     dist = {origen: 0.0}
     pred = {origen: None}
     explorados = set()
@@ -68,6 +61,12 @@ def dijkstra_heap(adj, origen, destino=None):
     return dist, pred, len(explorados)
 
 
+def costo_ruta(adj, ruta):
+    """Suma de los pesos de la ruta en la lista de adyacencia (para verificar)."""
+    pesos = {u: dict(vecinos) for u, vecinos in adj.items()}
+    return sum(pesos[u][v] for u, v in zip(ruta, ruta[1:]))
+
+
 def matriz_tiempos(adj, nodos_lugares):
     """Una ejecución de Dijkstra (sin destino) desde cada lugar -> matriz n x n (s)."""
     n = len(nodos_lugares)
@@ -77,26 +76,3 @@ def matriz_tiempos(adj, nodos_lugares):
         for j, t in enumerate(nodos_lugares):
             M[i][j] = dist.get(t, math.inf)
     return M
-
-
-if __name__ == "__main__":
-    G = ox.load_graphml(RUTA_GRAFO)
-    adj = construir_lista_adyacencia(G)
-    cat = pd.read_csv(RUTA_CATALOGO)
-    M = matriz_tiempos(adj, cat["nodo_osm"].tolist())
-
-    # Verificación contra NetworkX (solo para comprobar resultados)
-    import networkx as nx
-    import random
-    random.seed(42)
-    for _ in range(30):
-        i, j = random.randrange(40), random.randrange(40)
-        ref = nx.shortest_path_length(G, cat.nodo_osm[i], cat.nodo_osm[j], weight="travel_time")
-        assert abs(ref - M[i][j]) < 1e-6, (i, j, ref, M[i][j])
-    print("Verificación contra NetworkX: OK (30 pares)")
-
-    df = pd.DataFrame(M, index=cat["id"], columns=cat["id"])
-    df.index.name = "id_origen"
-    df.round(3).to_csv(RUTA_MATRIZ)
-    asim = sum(abs(M[i][j] - M[j][i]) > 1 for i in range(40) for j in range(i + 1, 40))
-    print(f"Matriz {len(M)}x{len(M)} guardada en {RUTA_MATRIZ}. Pares asimétricos (>1 s): {asim}")

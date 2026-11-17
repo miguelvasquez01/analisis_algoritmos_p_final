@@ -1,0 +1,15 @@
+{
+ "tamano": "40x40",
+ "unidad": "s",
+ "tiempo_calculo_ms": 390.4,
+ "ejecuciones_dijkstra": 40,
+ "pares_asimetricos_mas_de_1s": 727,
+ "pares_totales": 780,
+ "mayor_asimetria": {
+  "de": "Circasia (Parque Principal)",
+  "a": "Filandia (Parque Principal)",
+  "ida_s": 1790.2,
+  "vuelta_s": 1622.9,
+  "diferencia_s": 167.2
+ }
+}

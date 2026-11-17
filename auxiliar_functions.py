@@ -48,6 +48,43 @@ def medir_tiempo_ejecucion(funcion, *args, unidad_tiempo="s", umbral_segundos=60
     return resultado, tiempo_final, unidad_tiempo
 
 
+def info_maquina():
+    """Procesador, RAM, sistema operativo y versión de Python (protocolo, sección 6.1)."""
+    import platform
+    ram_gb = None
+    try:
+        if platform.system() == "Windows":
+            import ctypes
+
+            class _MEM(ctypes.Structure):
+                _fields_ = [("dwLength", ctypes.c_ulong), ("dwMemoryLoad", ctypes.c_ulong),
+                            ("ullTotalPhys", ctypes.c_ulonglong), ("ullAvailPhys", ctypes.c_ulonglong),
+                            ("ullTotalPageFile", ctypes.c_ulonglong), ("ullAvailPageFile", ctypes.c_ulonglong),
+                            ("ullTotalVirtual", ctypes.c_ulonglong), ("ullAvailVirtual", ctypes.c_ulonglong),
+                            ("ullAvailExtendedVirtual", ctypes.c_ulonglong)]
+            m = _MEM()
+            m.dwLength = ctypes.sizeof(_MEM)
+            ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(m))
+            ram_gb = m.ullTotalPhys / 1024 ** 3
+        else:
+            ram_gb = os.sysconf("SC_PAGE_SIZE") * os.sysconf("SC_PHYS_PAGES") / 1024 ** 3
+    except Exception:
+        pass
+    procesador = platform.processor()
+    if platform.system() == "Windows":
+        try:
+            import winreg
+            with winreg.OpenKey(winreg.HKEY_LOCAL_MACHINE,
+                                r"HARDWARE\DESCRIPTION\System\CentralProcessor\0") as k:
+                procesador = winreg.QueryValueEx(k, "ProcessorNameString")[0].strip()
+        except OSError:
+            pass
+    return {"procesador": procesador or platform.machine(),
+            "ram_gb": round(ram_gb, 1) if ram_gb else None,
+            "sistema_operativo": platform.platform(),
+            "python": platform.python_version()}
+
+
 def guardar_resultados_csv(datos, ruta_csv):
     """
     Guarda una lista de diccionarios o un DataFrame en un archivo CSV.
